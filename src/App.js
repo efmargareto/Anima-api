@@ -5,6 +5,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './views/Login/Login';
+import Register from './views/Register/Register';
 
 function App() {
   return ( 
@@ -12,7 +13,8 @@ function App() {
       <h1>Anima NFT</h1>
 
       <Routes>
-        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
       </Routes>
     </div>
   );

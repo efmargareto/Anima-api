@@ -6,6 +6,7 @@ import React from 'react'
 import InputGroup from '../../components/InputGroup/InputGroup'
 
 const Login = () => {
+
 	return (
 		<div className='Login'>
 			<div className='container'>
@@ -26,6 +27,14 @@ const Login = () => {
 						name='email'
 						type='email'
 						placeholder='Email'
+					></InputGroup>
+
+					<InputGroup
+						label='Password'
+						id='Login-form_input_password'
+						name='password'
+						type='password'
+						placeholder='Enter your password'
 					></InputGroup>
 
 					<button type='submit'>Submit</button>
