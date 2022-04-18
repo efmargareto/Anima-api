@@ -2,28 +2,24 @@
 // Login
 // --------------------
 
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm } from "react-hook-form";
 import InputGroup from '../../components/InputGroup/InputGroup'
 
 const Login = () => {
 
+
 	return (
 		<div className='Login'>
 			<div className='container'>
-				<form className='Login-form'>
+
+			
+				{/* <form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
 					<h1>Login</h1>
 
 					<InputGroup
-						label='Name'
-						id='Login-form_input_name'
-						name='name'
-						type='text'
-						placeholder='Name'
-					></InputGroup>
-
-					<InputGroup
 						label='Email'
-						id='Login-form_input_email'
+						id='email'
 						name='email'
 						type='email'
 						placeholder='Email'
@@ -31,7 +27,7 @@ const Login = () => {
 
 					<InputGroup
 						label='Password'
-						id='Login-form_input_password'
+						id='password'
 						name='password'
 						type='password'
 						placeholder='Enter your password'
@@ -39,7 +35,7 @@ const Login = () => {
 
 					<button type='submit'>Submit</button>
 
-				</form>
+				</form> */}
 			</div>
 		</div>	
 	)

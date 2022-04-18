@@ -11,7 +11,8 @@ const InputGroup = ({ label, id, name, type, placeholder, register, error }) => 
         className={`form-control ${error ? 'is-invalid' : ''}`}
         id={id}
         placeholder={placeholder}
-        // {...register(id)}
+        autoComplete='off'
+        {...register(id)}
       />
       <p className="invalid-feedback">{error}</p>
     </div>

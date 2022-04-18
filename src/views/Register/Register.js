@@ -1,53 +1,67 @@
-// --------------------
-// Register
-// --------------------
-
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import InputGroup from '../../components/InputGroup/InputGroup'
 import { registerUser } from '../../services/UserService'
+import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import './Register.css'
+
+// Hacemos validación desde el front, yup + useForm
+
+const schema = yup.object({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required()
+}).required();
 
 const Register = () => {
+  const navigate = useNavigate()
+  const [ backErrors, setBackErrors ] = useState({})
+  const { register, handleSubmit, formState:{ errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
-  // Submit
-  // Realiamos una petición al servicio con la data 
-  // Gestión de estado
-  const handleRegister = data => {
+  const onSubmit = (data) => {
     registerUser(data)
-      .then( response => {
-        console.log('Usuario registrado -->', response);
+      .then( user => {
+        navigate('/login')
       })
-      .catch()
+      .catch(err => {
+        setBackErrors(err?.response?.data?.errors)
+      })
   }
 
   return (
     <div className='Register'>
-
-      <InputGroup
-				label='Name'
-				id='Login-form_input_name'
-        name='name'
-				type='text'
-				placeholder='Name'
-			></InputGroup>
-
-      <InputGroup
-        label='Email'
-        id='Register-form_input_email'
-        name='name'
-        type='text'
-        placeholder='Email'
-      ></InputGroup>
-
-      <InputGroup
-        label='Password'
-        id='Register-form_input_password'
-        name='password'
-        type='password'
-        placeholder='Enter your password'
-      ></InputGroup>
-
-			<button type='submit' onClick={() => handleRegister(data)} >Submit</button>
-
+      <div className='container'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <InputGroup
+            label='Name'
+            id='name'
+            name='name'
+            type='text'
+            register={register}
+            error={backErrors?.name || errors.name?.message}
+          ></InputGroup>
+          <InputGroup
+            label='Email'
+            id='email'
+            register={register}
+            error={backErrors?.email || errors.email?.message}
+            type='email'
+          ></InputGroup>
+          <InputGroup
+            label='Password'
+            id='password'
+            name='password'
+            type='password'
+            register={register}
+            error={backErrors?.password || errors.password?.message}
+          ></InputGroup>
+          <button className='btn btn-primary'>Submit</button>
+        </form>
+      </div>
     </div>
   )
 }
