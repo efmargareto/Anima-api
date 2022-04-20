@@ -11,6 +11,7 @@ function App() {
   return ( 
     <div className="App"> 
       <h1>Anima NFT</h1>
+      <hr></hr>
 
       <Routes>
         <Route path='/login' element={<Login />}></Route>

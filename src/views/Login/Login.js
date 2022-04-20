@@ -12,10 +12,10 @@ const Login = () => {
 	return (
 		<div className='Login'>
 			<div className='container'>
+				<h2>Login</h2>
 
 			
 				{/* <form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
-					<h1>Login</h1>
 
 					<InputGroup
 						label='Email'
