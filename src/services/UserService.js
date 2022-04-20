@@ -1,3 +1,5 @@
-import http from './BaseService'
+import createHttp from './BaseService'
 
-export const registerUser = (data) => http.post('/user/create', data)
+const http = createHttp(true)
+
+export const getCurrentUser = () => http.get('/user/me')

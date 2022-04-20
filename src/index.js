@@ -7,15 +7,18 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from './contexts/AuthContext';
 import './index.css';
-// import './assets/style/custom.scss';
 
+// import './assets/style/custom.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <BrowserRouter>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </BrowserRouter>
 );
 

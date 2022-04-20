@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import InputGroup from '../../components/InputGroup/InputGroup'
-import { registerUser } from '../../services/UserService'
+import { registerUser } from '../../services/AuthService'
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
