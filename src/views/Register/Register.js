@@ -17,8 +17,7 @@ const schema = yup.object({
 
 const Register = () => {
   const navigate = useNavigate()
-  const [ backErrors, setBackErrors ] = useState({})
-  const { register, handleSubmit, formState:{ errors } } = useForm({
+  const { register, handleSubmit, setError, formState:{ errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
@@ -28,14 +27,16 @@ const Register = () => {
         navigate('/login')
       })
       .catch(err => {
-        setBackErrors(err?.response?.data?.errors)
+        console.log('Register errors', err.response.status)
+        if (err.response.status === 409) {
+          setError('email', {message: 'Email already exist'})
+        }
       })
   }
 
   return (
     <div className='Register'>
       <div className='container'>
-
         <h2>Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup
@@ -44,13 +45,13 @@ const Register = () => {
             name='name'
             type='text'
             register={register}
-            error={backErrors?.name || errors.name?.message}
+            error={errors.name?.message}
           ></InputGroup>
           <InputGroup
             label='Email'
             id='email'
             register={register}
-            error={backErrors?.email || errors.email?.message}
+            error={errors.email?.message}
             type='email'
           ></InputGroup>
           <InputGroup
@@ -59,7 +60,7 @@ const Register = () => {
             name='password'
             type='password'
             register={register}
-            error={backErrors?.password || errors.password?.message}
+            error={errors.password?.message}
           ></InputGroup>
           <button className='btn btn-primary'>Submit</button>
         </form>

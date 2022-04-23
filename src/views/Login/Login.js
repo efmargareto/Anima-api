@@ -33,7 +33,6 @@ const Login = () => {
 			})
 			.catch(err => {
 				setBackErrors(err?.response?.data?.message)
-				console.log('back errors login', backErrors)
 			})
 	}
 

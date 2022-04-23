@@ -3,6 +3,7 @@ import Login from './views/Login/Login';
 import { Profile } from './views/Profile/Profile';
 import Register from './views/Register/Register';
 import './App.css';
+import './scss/app.scss'
 
 function App() {
   return ( 
