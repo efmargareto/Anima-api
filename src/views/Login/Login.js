@@ -1,36 +1,39 @@
-// --------------------
-// Login
-// --------------------
-
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import InputGroup from '../../components/InputGroup/InputGroup'
 import { useAuthContext } from '../../contexts/AuthContext';
-import { loginUser } from '../../services/AuthService';
+import { loginUser } from '../../services/AuthService'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+const schema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required()
+}).required();
 
 const Login = () => {
-
 	const navigate = useNavigate()
 	const location = useLocation()
-
-	let from = location.state?.from?.pathname || "/profile";
+	const [ backErrors, setBackErrors ] = useState()
 
 	const { login } = useAuthContext()
 
-	const [error, setError] = useState(false)
+	let from = location.state?.from?.pathname || "/profile";
+
 	const { register, handleSubmit, formState:{ errors } } = useForm({
-    // resolver: yupResolver(schema)
+    resolver: yupResolver(schema)
   });
 
 	const onSubmit = (data) => {
+		setBackErrors(undefined)
 		loginUser(data)
 			.then(response => {
-				console.log(response.access_token);
 				login(response.access_token, () => navigate(from, { replace: true }))
 			})
 			.catch(err => {
-				setError(err?.response?.data?.message)
+				setBackErrors(err?.response?.data?.message)
+				console.log('back errors login', backErrors)
 			})
 	}
 
@@ -38,9 +41,7 @@ const Login = () => {
 		<div className='Login'>
 			<div className='container'>
 				<h2>Login</h2>
-
 					<form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
-
 						<InputGroup
 							label='Email'
 							id='email'
@@ -48,19 +49,17 @@ const Login = () => {
 							type='email'
 							placeholder='Email'
 							register={register}
+							error={errors.email?.message}
 						></InputGroup>
-
 						<InputGroup
 							label='Password'
 							id='password'
-							name='password'
-							type='password'
 							placeholder='Enter your password'
 							register={register}
+							error={backErrors || errors.password?.message}
+							type='password'
 						></InputGroup>
-
 						<button className='btn btn-primary'>Submit</button>
-
 					</form>
 			</div>
 		</div>	

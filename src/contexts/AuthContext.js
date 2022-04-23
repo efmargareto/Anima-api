@@ -17,11 +17,16 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const getUser = (cb) => {
+    console.log('entra en get User')
     getCurrentUser()
       .then(user => {
         setUser(user)
         setIsAuthenticationFetched(true)
         cb && cb()
+      })
+      .catch(err => {
+        console.log('catch del get Curren user')
+        console.log(err)
       })
   }
 

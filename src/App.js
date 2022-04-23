@@ -1,11 +1,8 @@
-// --------------------
-// App js
-// --------------------
-
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import Login from './views/Login/Login';
+import { Profile } from './views/Profile/Profile';
 import Register from './views/Register/Register';
+import './App.css';
 
 function App() {
   return ( 
@@ -16,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
       </Routes>
     </div>
   );
