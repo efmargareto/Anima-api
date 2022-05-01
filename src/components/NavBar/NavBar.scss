@@ -1,0 +1,40 @@
+$color-main: #5733f5;
+$color-white: #fff;
+$color-grey_dark: #727272;
+$color-grey_light: #c2c2c2;
+
+
+.NavBar {
+  height: 100vh;
+  width: 300px;
+  position: fixed;
+  padding: 1.5rem;
+  background: black;
+  #logo {
+    width: 100px;
+    object-fit: cover;
+    margin-bottom: 50px;
+  }
+  .NavBar-block {
+    margin-bottom: 30px;
+    .NavBar-block_title {
+      margin-bottom: 15px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $color-grey_light;
+    } 
+    .NavBar-block_element {
+      display: flex;
+      margin-bottom: 10px;
+      .NavBar-block_linkIcon {
+        width: 30px;
+      }
+      .NavBar-block_link {
+        display: block;
+        margin-left: 10px;
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+  }
+}

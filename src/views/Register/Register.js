@@ -36,7 +36,7 @@ const Register = () => {
 
   return (
     <div className='Register'>
-      <div className='container'>
+      <div className='anima-container'>
         <h2>Register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup

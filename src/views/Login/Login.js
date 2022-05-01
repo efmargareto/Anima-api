@@ -38,7 +38,7 @@ const Login = () => {
 
 	return (
 		<div className='Login'>
-			<div className='container'>
+			<div className='anima-container'>
 				<h2>Login</h2>
 					<form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
 						<InputGroup

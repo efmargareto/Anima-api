@@ -1,3 +1,75 @@
-body {
-  background-color: #000;
+$color-main: #5733f5;
+$color-white: #fff;
+$color-black: #000;
+$color-black-anima: #101010;
+$color-grey: #c2c2c2;
+$color-anima: #34f599;
+// $color-green: #00FF00;
+// $color-blue: #0000FF;
+// Reset
+
+* {
+  box-sizing: border-box;
 }
+
+body {
+  background-color: $color-black-anima;
+}
+
+h1, h2, h3, h4, span, p, label {
+  color: $color-white;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.anima-container {
+  width: calc(100% - 300px);
+  padding: 30px;
+  margin-left: 300px;
+  background: $color-black-anima;
+}
+
+.anima-container-page {
+    max-width: 1200px;
+}
+
+
+// Buttons
+
+.btn-anima {
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  background-color: $color-main;
+  color: $color-white;
+}
+
+.link-anima {
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 10px;
+  color: #444;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 1px;
+    background: $color-main;
+    transition: 0.3s ease;
+  }
+  &:hover {
+    color: #444;
+   &::before {
+      width: 100%;
+    }
+  }
+}
+

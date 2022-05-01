@@ -1,0 +1,53 @@
+$color-main: #5733f5;
+$color-white: #fff;
+$color-black: #000;
+$color-black-anima: #101010;
+$color-grey: #c2c2c2;
+$color-anima: #feda01;
+
+.Galery {
+  .Galery-block {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 50px;
+    .Galery-filters {
+      width: 20%;
+      padding: 15px;
+      margin: 0 5%;
+      h3 {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      .filter {
+        display: block;
+        margin-bottom: 10px;
+        cursor: pointer;
+        color: #feda01;
+        border: 1px solid #feda01;
+        text-transform: uppercase;
+        border-radius: 7px;
+        padding: 10px 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .Galery-nft {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      width: calc(100% - 200px);
+      max-width: 1000px;
+      .nft {
+        width: 250px;
+        height: 250px;
+        background: $color-anima;
+        margin-bottom: 35px;
+        margin-right: 35px;
+        border-radius: 20px;
+      }
+    }
+  }
+
+
+}
