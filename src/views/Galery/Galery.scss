@@ -1,38 +1,47 @@
-$color-main: #5733f5;
+$color-main: #bc9c72;
 $color-white: #fff;
 $color-black: #000;
-$color-black-anima: #101010;
+$color-black-main: #101010;
 $color-grey: #c2c2c2;
-$color-anima: #feda01;
 
 .Galery {
+  .anima-section {
+    max-width: 1500px;
+  }
   .Galery-block {
     display: flex;
     justify-content: flex-start;
-    margin-top: 50px;
     .Galery-filters {
       width: 20%;
       padding: 15px;
-      margin: 0 5%;
+      margin-right: 5%;
       h3 {
         margin-bottom: 20px;
         text-transform: uppercase;
       }
-      .filter {
+      .FilterGalery {
         display: block;
         margin-bottom: 10px;
         cursor: pointer;
-        color: #feda01;
-        border: 1px solid #feda01;
+        color: $color-main;
+        border: 1px solid $color-main;
         text-transform: uppercase;
-        border-radius: 7px;
         padding: 10px 15px;
+        border-radius: 7px;
         &:last-child {
           margin-bottom: 0;
         }
+        &.active {
+          .filter-name {
+            color: #fff;
+          } 
+        }
+        .subfilter {
+          font-size: 14px;
+          text-transform: capitalize;
+        }
       }
     }
-
     .Galery-nft {
       justify-content: flex-start;
       flex-wrap: wrap;
@@ -41,13 +50,44 @@ $color-anima: #feda01;
       .nft {
         width: 250px;
         height: 250px;
-        background: $color-anima;
+        background: $color-main;
         margin-bottom: 35px;
         margin-right: 35px;
         border-radius: 20px;
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
       }
     }
   }
+}
 
-
+@media (max-width: 1500px) {
+  .Galery {
+    .anima-section {
+      max-width: 1500px;
+    }
+    .Galery-block {
+      .Galery-filters {
+        h3 {
+        }
+        .filter {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .Galery-nft {
+        .nft {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 25px;
+          margin-right: 25px;
+          &:nth-child(3n) {
+            margin-right: 25px;
+          }
+        }
+      }
+    }
+  }
 }

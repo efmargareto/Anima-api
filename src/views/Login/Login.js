@@ -38,8 +38,9 @@ const Login = () => {
 
 	return (
 		<div className='Login'>
-			<div className='anima-container'>
-				<h2>Login</h2>
+			<div className='anima-container user-container '>
+				<div className='user-block'>
+					<h4>Create an account</h4>
 					<form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
 						<InputGroup
 							label='Email'
@@ -60,6 +61,7 @@ const Login = () => {
 						></InputGroup>
 						<button className='btn btn-primary'>Submit</button>
 					</form>
+				</div>
 			</div>
 		</div>	
 	)

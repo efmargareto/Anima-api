@@ -36,35 +36,37 @@ const Register = () => {
 
   return (
     <div className='Register'>
-      <div className='anima-container'>
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <InputGroup
-            label='Name'
-            id='name'
-            name='name'
-            type='text'
-            register={register}
-            error={errors.name?.message}
-          ></InputGroup>
-          <InputGroup
-            label='Email'
-            id='email'
-            register={register}
-            error={errors.email?.message}
-            type='email'
-          ></InputGroup>
-          <InputGroup
-            label='Password'
-            id='password'
-            name='password'
-            type='password'
-            register={register}
-            error={errors.password?.message}
-          ></InputGroup>
-          <button className='btn btn-primary'>Submit</button>
-        </form>
-      </div>
+      <div className='anima-container user-container'>
+        <div className='user-block'>
+          <h4>WELCOME BACK TO THE ANIMA FAMILY 💥</h4>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputGroup
+              label='Name'
+              id='name'
+              name='name'
+              type='text'
+              register={register}
+              error={errors.name?.message}
+            ></InputGroup>
+            <InputGroup
+              label='Email'
+              id='email'
+              register={register}
+              error={errors.email?.message}
+              type='email'
+            ></InputGroup>
+            <InputGroup
+              label='Password'
+              id='password'
+              name='password'
+              type='password'
+              register={register}
+              error={errors.password?.message}
+            ></InputGroup>
+            <button className='btn btn-primary'>Submit</button>
+          </form>
+        </div>
+        </div>
     </div>
   )
 }

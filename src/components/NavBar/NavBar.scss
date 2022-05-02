@@ -6,10 +6,10 @@ $color-grey_light: #c2c2c2;
 
 .NavBar {
   height: 100vh;
-  width: 300px;
+  width: 250px;
   position: fixed;
   padding: 1.5rem;
-  background: black;
+  background: #181818;
   #logo {
     width: 100px;
     object-fit: cover;
@@ -34,6 +34,7 @@ $color-grey_light: #c2c2c2;
         margin-left: 10px;
         color: $color-white;
         text-decoration: none;
+        font-size: 14px;
       }
     }
   }

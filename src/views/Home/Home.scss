@@ -1,0 +1,110 @@
+$color-main: #bc9c72;
+$color-white: #fff;
+$color-black: #000;
+$color-black-main: #101010;
+$color-grey: #c2c2c2;
+
+// ----------------
+// Hero
+// ----------------
+
+.Hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  .Hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: .2s linear;
+  }
+  .Hero-block {
+    position: absolute;
+    top: 37%;
+    left: 20%;
+    width: 500px;
+    h1 {
+      font-size: 45px;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+  }
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    height: inherit;
+    width: 100%;
+    background: linear-gradient(-135deg,rgba(0,0,0,0) 0%,rgb(0,0,0) 120%,rgb(0,0,0) 100%);
+  }
+}
+
+
+// ----------------
+// About the proyect
+// ----------------
+
+.AboutProyect {
+  width: 100%;
+  .AboutProyect-info {
+    display: flex;
+    justify-content: space-between;
+    .AboutProyect-info_text{
+      width: 45%;
+      text-transform: lowercase;
+    }
+    .AboutProyect-imgs {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      .AboutProyect-img_nft {
+        width: 164px;
+        height: 164px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        background: $color-main;
+        border-radius: 7px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
+// ----------------
+// About the proyect
+// ----------------
+
+.Avatars {
+  .Avatars-info {
+    display: flex;
+    justify-content: space-between;
+    p {
+      width: 45%;
+    }
+    .Avatars-info-block {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      .Avatars-info-block_icon {
+        width: 164px;
+        height: 164px;
+        border: 1px solid $color-main;
+        border-radius: 7px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+      }
+ 
+    }
+  }
+}
+
+
