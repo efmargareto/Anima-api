@@ -1,12 +1,11 @@
 import heroImg from './../../assets/img/anima-hero.png'
-import nft1 from './../../assets/nft/home-1.jpeg'
-import nft2 from './../../assets/nft/home-2.jpeg'
-import nft3 from './../../assets/nft/home-3.jpeg'
+import nft1 from './../../assets/nft/anima-1.jpeg'
+import nft2 from './../../assets/nft/anima-2.jpeg'
+import nft3 from './../../assets/nft/anima-3.jpeg'
 import React, { useEffect } from 'react'
 import './Home.scss'
 
 export const Home = () => {
-
 
   document.onscroll = () => {
     let depth = 1 + window.scrollY / 1000

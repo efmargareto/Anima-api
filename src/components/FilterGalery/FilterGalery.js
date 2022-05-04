@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const FilterGalery = (props) => {
-  const { nameFilter, subFilters, handleFilltersOptions, state } =  props
+  const { nameFilter, subFilters, handleFilltersOptions, state, handleSubFilter } =  props
   return (
     <div className={`FilterGalery ${state && 'active'}`}>
         <div className='filter-name' onClick={(event) => handleFilltersOptions(event)}>{nameFilter}</div>
@@ -13,7 +13,7 @@ export const FilterGalery = (props) => {
                   return (
                     <div key={ind}>                
                       {
-                        <div className='subfilter'>{subfilter}</div>
+                        <div className='subfilter' onClick={() => handleSubFilter(nameFilter, subfilter)}>{subfilter}</div>
                       }
                     </div>
                   )
