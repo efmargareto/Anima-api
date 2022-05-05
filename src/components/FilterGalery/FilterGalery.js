@@ -7,13 +7,13 @@ export const FilterGalery = (props) => {
         <div className='filter-name' onClick={(event) => handleFilltersOptions(event)}>{nameFilter}</div>
         {
           state && (
-            <div className='filter-options background-options'>
+            <div className='filter-options'>
               { subFilters && 
                 subFilters.map( (subfilter,ind) => {
                   return (
                     <div key={ind}>                
                       {
-                        <div className='subfilter' onClick={() => handleSubFilter(nameFilter, subfilter)}>{subfilter}</div>
+                        <div className={`${nameFilter}-subfilter subfilter`} onClick={(event) => handleSubFilter(nameFilter, subfilter, event)}>{subfilter}</div>
                       }
                     </div>
                   )

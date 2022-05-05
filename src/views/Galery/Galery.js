@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { FilterGalery } from '../../components/FilterGalery/FilterGalery'
-import { getAllNfts } from '../../services/NftService'
+import { getAllNfts, getFilterNfts, getSubFilters } from '../../services/NftService'
 import './Galery.scss'
 
 export const Galery = () => {
-  const [allNfts, setAllNfts] = useState(null)
   const [filterNfts, setFilterNfts] = useState(null) 
+  const [setSubFilters, setSubfilter] = useState({}) 
+  const [avaliableSubFilter, setGetSubfilter] = useState({})
 
   const [backgroundState, setBackgroundState] = useState(false)
-  const backgroundSubFilters = ['white', 'pink', 'green']
   const [clothesState, setClothesState] = useState(false)
-  const clothesSubFilters = ['t-shirt', 'jacket', 'sweatshirt'] 
   const [jewelsState, setJewelsState] = useState(false)
-  const jewelsSubFilters = ['earrings', 'chains', 'others'] 
   const [skinState, setSkinState] = useState(false)
-  const skinSubFilter = ['basic', 'tatto', 'other']
   const [eyesState, setEyesState] = useState(false)
-  const eyesSubFilter = ['basic', 'glasses', 'other']
   const [headState, setHeadState] = useState(false)
-  const headSubFilter = ['basic', 'glasses', 'other']
+
+  useEffect(() => {
+    getAllNfts()
+      .then((nfts) => {
+        setFilterNfts(nfts)
+      })
+      .catch()
+    getSubFilters()
+      .then((data) => {
+        setGetSubfilter(data)
+      })
+      .catch()
+  }, [])
 
   const handleFilltersOptions = (event) => {
     const filterSelected = event.target.innerText.toLowerCase();
@@ -46,29 +54,58 @@ export const Galery = () => {
     }
   }
 
-  const handleSubFilter = (namefilter, subfilter) => {
-    console.log(allNfts)
-    console.log(namefilter, subfilter)
-
-    if( namefilter && subfilter ) {
-      const filterNft = allNfts.filter((nft) => {
-        return nft[namefilter].includes(subfilter)
-      })
-      console.log(filterNft)
-      setFilterNfts(filterNft)
+  const handleSubFilter = (namefilter, subfilter, event) => {
+  
+    const addSubfilter = {
+      ...setSubFilters,
+      [namefilter]: subfilter
     }
 
-  }
+    console.log(addSubfilter)
 
-  useEffect(() => {
-    getAllNfts()
-      .then((nfts) => {
-        console.log(nfts)
-        setAllNfts(nfts)
-        setFilterNfts(nfts)
+    const activeSubfilterClass = document.querySelectorAll(`.${namefilter}-subfilter`) 
+    activeSubfilterClass.forEach(element => {
+      event.target.innerText === element.innerText 
+      ? element.classList.add('active')
+      : element.classList.remove('active')
+    });
+
+    setSubfilter(addSubfilter)
+    let params = []
+    for (const key in addSubfilter) {
+      params.push(`${key}=${addSubfilter[key]}`)
+    }
+    const urlParams = `?${params.join().replace(',','&')}`
+    getFilterNfts(urlParams)
+      .then((response) => {
+        setFilterNfts(response)
       })
       .catch()
-  }, [])
+  }
+
+  const handleReset = () => {
+    getAllNfts()
+    .then((nfts) => {
+
+
+      getSubFilters()
+      .then((data) => {
+        setFilterNfts(nfts)
+        setGetSubfilter({})
+        
+        setBackgroundState(false)
+        setClothesState(false)
+        setJewelsState(false)
+        setSkinState(false)
+        setEyesState(false)
+        setHeadState(false)
+        setGetSubfilter(data)
+      })
+      .catch()
+
+    })
+    .catch()
+  } 
 
   return (
     <div className='Galery'>
@@ -80,50 +117,50 @@ export const Galery = () => {
                 nameFilter='background' 
                 state={backgroundState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={backgroundSubFilters} 
+                subFilters={avaliableSubFilter?.background} 
                 handleSubFilter={handleSubFilter}
               />
               <FilterGalery 
                 nameFilter='clothes' 
                 state={clothesState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={clothesSubFilters} 
+                subFilters={avaliableSubFilter?.clothes} 
                 handleSubFilter={handleSubFilter}
               />
               <FilterGalery  
                 nameFilter='jewels' 
                 state={jewelsState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={jewelsSubFilters} 
+                subFilters={avaliableSubFilter?.jewels} 
                 handleSubFilter={handleSubFilter}
               />
               <FilterGalery  
                 nameFilter='skin' 
                 state={skinState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={skinSubFilter} 
+                subFilters={avaliableSubFilter?.skin} 
                 handleSubFilter={handleSubFilter}
               />
               <FilterGalery  
                 nameFilter='eyes' 
                 state={eyesState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={eyesSubFilter} 
+                subFilters={avaliableSubFilter?.eyes} 
                 handleSubFilter={handleSubFilter}
               />
               <FilterGalery  
                 nameFilter='head' 
                 state={headState}
                 handleFilltersOptions={handleFilltersOptions} 
-                subFilters={headSubFilter}
+                subFilters={avaliableSubFilter?.head}
                 handleSubFilter={handleSubFilter} 
               />
+              <button className='FilterGalery button' onClick={() => handleReset()}>Resest Filters</button>
           </div>
           <div className='Galery-nft d-flex'>
-
             { filterNfts && 
               filterNfts.map( (nft, ind) => {
-                const { background, clotes, earrings, eyes, head, image, mouth, skin } = nft
+                const { image } = nft
                 return (
                   <div key={ind} className='nft' style={{backgroundImage: `url(${image})`}}></div>
                 )
