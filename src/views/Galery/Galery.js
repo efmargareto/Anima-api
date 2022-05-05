@@ -60,9 +60,7 @@ export const Galery = () => {
       ...setSubFilters,
       [namefilter]: subfilter
     }
-
-    console.log(addSubfilter)
-
+    
     const activeSubfilterClass = document.querySelectorAll(`.${namefilter}-subfilter`) 
     activeSubfilterClass.forEach(element => {
       event.target.innerText === element.innerText 
@@ -86,13 +84,10 @@ export const Galery = () => {
   const handleReset = () => {
     getAllNfts()
     .then((nfts) => {
-
-
       getSubFilters()
       .then((data) => {
         setFilterNfts(nfts)
         setGetSubfilter({})
-        
         setBackgroundState(false)
         setClothesState(false)
         setJewelsState(false)
@@ -102,7 +97,6 @@ export const Galery = () => {
         setGetSubfilter(data)
       })
       .catch()
-
     })
     .catch()
   } 

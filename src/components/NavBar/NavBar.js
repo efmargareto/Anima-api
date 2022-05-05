@@ -26,6 +26,13 @@ export const NavBar = () => {
             <NavLink className='NavBar-block_link' to='/register'>Sing Up</NavLink>
           </div>
         </div>
+        <div className='NavBar-block'>
+          <p className='NavBar-block_title'>Profile</p>
+          <div className='NavBar-block_element'>
+            <img className='NavBar-block_linkIcon' src={galeryIcon} alt='logo'></img>
+            <NavLink className='NavBar-block_link' to='/profile'>Acount</NavLink>
+          </div>
+        </div>
     </div>
   )
 }

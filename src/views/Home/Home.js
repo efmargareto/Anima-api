@@ -2,16 +2,12 @@ import heroImg from './../../assets/img/anima-hero.png'
 import nft1 from './../../assets/nft/anima-1.jpeg'
 import nft2 from './../../assets/nft/anima-2.jpeg'
 import nft3 from './../../assets/nft/anima-3.jpeg'
+import { computeHeadingLevel } from '@testing-library/react'
+import { Hero } from '../../components/Hero/Hero'
 import React, { useEffect } from 'react'
 import './Home.scss'
 
 export const Home = () => {
-
-  document.onscroll = () => {
-    let depth = 1 + window.scrollY / 1000
-    const element = document.querySelector('.Hero-img');
-    element.style.transform = `scale(${depth}) translateY(${depth}px)`
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,17 +17,15 @@ export const Home = () => {
     <div className='Home'>
       <div className='anima-container'>
 
-        <div className='Hero'>
-          <img className='Hero-img' src={heroImg} alt=''></img>
-          <div className='background-overlay'></div>
-          <div className='Hero-block'>
-            <h1>Wellcome to Anima</h1>
-            <p>A limited NFT collection for degens from degens.</p>
-            <button className='btn-anima'>Galery</button>
-            <button className='link-anima ms-2'>Login</button>
-          </div>
-        </div>
-
+        <Hero 
+          isSmall={false}
+          image={heroImg} 
+          title='Wellcome to Anima' 
+          subtitle='A limited NFT collection for degens from degens.'
+          mainButton={{text:'Galery', href:'#'}}
+          secondaryButton={{text:'Login', href:'#'}}
+        />
+  
         <div className='separator'></div>
 
         <div className="AboutProyect anima-section">

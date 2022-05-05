@@ -13,6 +13,9 @@ $color-grey: #c2c2c2;
   width: 100%;
   height: 60vh;
   overflow: hidden;
+  &.small {
+    height: 45vh;
+  }
   .Hero-img {
     position: absolute;
     top: 0;
