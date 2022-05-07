@@ -75,6 +75,10 @@ $color-grey: #c2c2c2;
         background: $color-main;
         border-radius: 7px;
         object-fit: cover;
+        &.icon {
+          background: transparent;
+          border: 1px solid $color-main;
+        }
       }
     }
   }

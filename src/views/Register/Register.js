@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import './Register.css'
+import './Register.scss'
 
 // Hacemos validación desde el front, yup + useForm
 
@@ -38,7 +38,7 @@ const Register = () => {
     <div className='Register'>
       <div className='anima-container user-container'>
         <div className='user-block'>
-          <h4>WELCOME BACK TO THE ANIMA FAMILY 💥</h4>
+          <h3 className='mb-2'>WELCOME BACK TO THE ANIMA FAMILY</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <InputGroup
               label='Name'
@@ -63,7 +63,7 @@ const Register = () => {
               register={register}
               error={errors.password?.message}
             ></InputGroup>
-            <button className='btn btn-primary'>Submit</button>
+            <button className='btn-anima'>Submit</button>
           </form>
         </div>
         </div>

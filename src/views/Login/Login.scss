@@ -1,0 +1,32 @@
+$color-main: #bc9c72;
+$color-white: #fff;
+$color-black: #000;
+$color-black-anima: #181818;
+$color-grey: #c2c2c2;
+$color-grey-dark: #181818;
+
+.Login {
+  .user-container {
+    // background-image: url('./../../assets/nft/WhatsApp\ Image\ 2022-04-29\ at\ 8.34.26\ PM.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position-x: 300px;
+    // background-color: #fcd6dd;
+    .background-login-overlay {
+      position: absolute;
+      top: 0;
+      height: inherit;
+      width: 100%;
+      background: linear-gradient(-135deg,rgba(0,0,0,0) 0%,rgb(0,0,0) 120%,rgb(0,0,0) 100%);
+    }
+    .user-block {
+      padding: 45px;
+      border: 1px solid $color-main;
+      border-radius: 7px;
+      background-color: rgba(24, 24, 24, .85);
+      z-index: 999;
+    }
+  }
+}

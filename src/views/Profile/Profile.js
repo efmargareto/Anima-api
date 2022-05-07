@@ -1,14 +1,29 @@
-import React, { useState } from 'react'
+import { computeHeadingLevel } from '@testing-library/react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Hero } from '../../components/Hero/Hero'
+import { getNftLiked } from '../../services/NftService'
+import { getCurrentUser } from '../../services/UserService'
 import heroImg from './../../assets/img/anima-hero-account.png'
 import './profile.scss'
 
 export const Profile = () => {
 
   const [loading, setloading] = useState(true)
+  const [savedNft, setSavedNft] = useState([])
 
-  
+  useEffect(() => {
+    getCurrentUser()
+    .then((user) => {
+      console.log('USER WITH LIKES', user.id)
+      getNftLiked(user.id)
+        .then( nftSaved => {
+          console.log('getLiked NFT',nftSaved)
+          setloading(false)
+          setSavedNft(nftSaved)
+        })
+    })
+  }, [])
 
   return (
     <div className='Profile'>
@@ -30,7 +45,7 @@ export const Profile = () => {
             <p className='small'>efmargareto@hotmail.com</p>
           </div>
           <div className='Profile-inventory-block'>
-            <h5>Wellcome to your inventory</h5>
+            <h4 className='mb-3'>Wellcome to your inventory</h4>
             <p className='small'>You could see your saved NFT in this page</p>
             <p className='small'>Go to the galery and Check All Anima NFT</p>
             <Link className='btn-anima' to="/galery">Galery</Link>
@@ -41,7 +56,7 @@ export const Profile = () => {
 
         <div className='Profile-inventory-saved anima-section'>
 
-          <h5>All your saved NFTs</h5>
+          <h4 className='mb-4'>All your saved NFTs</h4>
 
           {
             loading 
@@ -52,6 +67,24 @@ export const Profile = () => {
             ) : (
               <div className='NFT-saved-Block'>
 
+              { 
+                savedNft.map( (nftSaved, ind) => {
+                  const {image} = nftSaved
+
+                  console.log('NFT Saved', nftSaved)
+                    return (
+                      <div className={ind}>
+                        <div  
+                          className='nft' 
+                          style={{backgroundImage: `url(${image})`}}
+                        >
+                        </div>
+                      </div>
+                    )
+       
+                })
+              }
+              <div className='nft'></div>
               </div>
             )
           }

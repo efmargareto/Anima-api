@@ -6,6 +6,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { loginUser } from '../../services/AuthService'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import './Login.scss'
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -39,8 +40,9 @@ const Login = () => {
 	return (
 		<div className='Login'>
 			<div className='anima-container user-container '>
+				{/* <div className='background-login-overlay'></div> */}
 				<div className='user-block'>
-					<h4>Create an account</h4>
+					<h3 className='mb-2'>Login</h3>
 					<form className='Login-form' onSubmit={handleSubmit(onSubmit)}>
 						<InputGroup
 							label='Email'
@@ -59,7 +61,7 @@ const Login = () => {
 							error={backErrors || errors.password?.message}
 							type='password'
 						></InputGroup>
-						<button className='btn btn-primary'>Submit</button>
+						<button className='btn-anima'>Submit</button>
 					</form>
 				</div>
 			</div>

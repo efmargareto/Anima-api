@@ -60,6 +60,7 @@ $color-grey-dark: #181818;
       .nft {
         width: 250px;
         height: 250px;
+        position: relative;
         background: $color-main;
         margin-bottom: 25px;
         margin-right: 25px;
@@ -68,6 +69,21 @@ $color-grey-dark: #181818;
         background-position: center;
         &:nth-child(3n) {
           margin-right: 0;
+        }
+        .like-icon {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background-size: contain;
+          width: 15px;
+          height: 19px;
+          height: inherit;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          background-image: url('./../../assets/img/saveIcon.png');
+          &.active {
+            background-image: url('./../../assets/img/saved-Icon.png');
+          }
         }
       }
     }

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FilterGalery } from '../../components/FilterGalery/FilterGalery'
-import { getAllNfts, getFilterNfts, getSubFilters } from '../../services/NftService'
+import { getAllNfts, getFilterNfts, getSubFilters, likeNft } from '../../services/NftService'
+import { getAccessToken } from '../../store/AccessTokenStore'
+import { useAuthContext } from '../../contexts/AuthContext'
+import { getCurrentUser } from '../../services/UserService'
+import { computeHeadingLevel } from '@testing-library/react'
 import './Galery.scss'
 
 export const Galery = () => {
@@ -101,6 +105,20 @@ export const Galery = () => {
     .catch()
   } 
 
+  const handleLikes = (event, productId) => {
+    console.log('handle like')
+    console.log('event target dataset', event.target)
+
+    getCurrentUser()
+    .then((user) => {
+      likeNft(productId, user.id)
+        .then( response => {
+          console.log('like server response', response)
+          event.target.classList.toggle('active')
+        })
+    })
+  }
+
   return (
     <div className='Galery'>
       <div className='anima-container'>
@@ -154,9 +172,24 @@ export const Galery = () => {
           <div className='Galery-nft d-flex'>
             { filterNfts && 
               filterNfts.map( (nft, ind) => {
-                const { image } = nft
+                const { image, _id } = nft
                 return (
-                  <div key={ind} className='nft' style={{backgroundImage: `url(${image})`}}></div>
+                  <div 
+                    key={ind} 
+                    className='nft' 
+                    style={{backgroundImage: `url(${image})`}}
+                  >
+                    {
+                      getAccessToken() &&
+                      <>
+                        <div
+                          className='like-icon' 
+                          onClick={event => handleLikes(event, _id)}
+                          >  
+                        </div>
+                      </>
+                    }
+                  </div>
                 )
               })
             }

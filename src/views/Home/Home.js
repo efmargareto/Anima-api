@@ -2,13 +2,13 @@ import heroImg from './../../assets/img/anima-hero.png'
 import nft1 from './../../assets/nft/anima-1.jpeg'
 import nft2 from './../../assets/nft/anima-2.jpeg'
 import nft3 from './../../assets/nft/anima-3.jpeg'
-import { computeHeadingLevel } from '@testing-library/react'
 import { Hero } from '../../components/Hero/Hero'
 import React, { useEffect } from 'react'
+
 import './Home.scss'
 
 export const Home = () => {
-
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
@@ -44,19 +44,22 @@ export const Home = () => {
 
         <div className='separator'></div>
 
-        <div className='Avatars anima-section'>
-          <h2>Avatars</h2>
-          <div className='Avatars-info'>
-            <p>10000 avatar will be available in total. All avatar traits and attributes will be generated randomly and revealed after the sale.</p>
-            <div className='Avatars-info-block'>
-              <div className='Avatars-info-block_icon'></div>
-              <div className='Avatars-info-block_icon'></div>
-              <div className='Avatars-info-block_icon'></div>
+        <div className="AboutProyect anima-section">
+          <div className="AboutProyect-info">
+            <div className='AboutProyect-info_text'>
+              <h2>Avatars</h2>
+              <p>10000 avatar will be available in total. All avatar traits and attributes will be generated randomly and revealed after the sale.</p>
+            </div>        
+            <div className='AboutProyect-imgs'>
+              <div className='AboutProyect-img_nft icon'></div>
+              <div className='AboutProyect-img_nft icon'></div>    
+              <div className='AboutProyect-img_nft icon'></div>    
             </div>
           </div>
         </div>
-
+3
       </div>
     </div>
   )
 }
+   
