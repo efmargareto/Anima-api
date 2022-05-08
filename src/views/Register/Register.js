@@ -38,7 +38,7 @@ const Register = () => {
     <div className='Register'>
       <div className='anima-container user-container'>
         <div className='user-block'>
-          <h3 className='mb-2'>WELCOME BACK TO THE ANIMA FAMILY</h3>
+          <h3 className='mb-2'>JOIN TO ANIMA FAMILY</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <InputGroup
               label='Name'

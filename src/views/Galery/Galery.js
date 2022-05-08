@@ -22,6 +22,7 @@ export const Galery = () => {
   useEffect(() => {
     getAllNfts()
       .then((nfts) => {
+        console.log('All nft', nfts)
         setFilterNfts(nfts)
       })
       .catch()
@@ -77,9 +78,11 @@ export const Galery = () => {
     for (const key in addSubfilter) {
       params.push(`${key}=${addSubfilter[key]}`)
     }
-    const urlParams = `?${params.join().replace(',','&')}`
+    const urlParams = `?${params.join().replace(/,/g, '&')}`
+    console.log('Url filters params', urlParams);
     getFilterNfts(urlParams)
       .then((response) => {
+        console.log('filter nft', response)
         setFilterNfts(response)
       })
       .catch()
@@ -99,6 +102,7 @@ export const Galery = () => {
         setEyesState(false)
         setHeadState(false)
         setGetSubfilter(data)
+        setSubfilter({})
       })
       .catch()
     })

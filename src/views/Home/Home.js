@@ -57,7 +57,50 @@ export const Home = () => {
             </div>
           </div>
         </div>
-3
+
+
+      <div className='separator'></div>
+
+      <div className='RoadMap anima-section'>
+        <h2>RoadMap</h2>
+        <div className='RoadMap-block'>
+            <p className='title'>ANIMA WEARABLES</p>
+            <div className='RoadMap-block-caracteristicas'>
+              <p>- You will be able to redeem unique wearables depending on the avatar you hold.</p>
+              <p>- Redeem unique physical collectibles created from your Anima avatar.</p>
+            </div>
+        </div>
+        <div className='RoadMap-block'>
+            <p className='title'>SPECIAL ACCESS</p>
+            <div className='RoadMap-block-caracteristicas'>
+              <p>- Owning one of our NFTs will grant you access to ANIMA ecosystem and only holders unique experiences.</p>
+            </div>
+        </div>
+        <div className='RoadMap-block'>
+            <p className='title'>METAVERSE & BEYOND</p>
+            <div className='RoadMap-block-caracteristicas'>
+              <p>- ANIMA.META will give you access to 3D files to use across different metaverse platforms.</p>
+              <p>- Meaning your avatar will be available in other platforms.</p>
+            </div>
+        </div>
+        <div className='RoadMap-block'>
+            <p className='title'>ANIMA HOME</p>
+            <div className='RoadMap-block-caracteristicas'>
+              <p>- Airdropped for free to our holders, you will be able to customize, upgrade, hangout with friends and host events in your own exclusive space.</p>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
   )

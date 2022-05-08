@@ -9,8 +9,9 @@ $color-grey-dark: #181818;
   .Profile-inventory{
     display: flex;
     justify-self: unset;
+    justify-content: space-between;
     .Profile-inventory-info {
-      width: 35%;
+      width: 20%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -22,13 +23,36 @@ $color-grey-dark: #181818;
         background-color: $color-main;
         margin-bottom: 10px;
       }
-
+      .Profile-inventory-info_buttons {
+        button {
+          text-transform: lowercase !important;
+          color: $color-main;
+          &:last-child {
+            margin-right: 0;
+            font-size: 1rem;
+            color: $color-main;
+          }
+        }
+      }
+      .basura {
+        background: transparent;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        border-radius: 0;
+        margin-top: 8px;
+        cursor: pointer;
+      }
     }
     .Profile-inventory-block {
-      width: 65%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 35%;
       border-radius: 7px;
       border: 1px solid $color-main;
-      padding: 40px;
+      padding: 30px;
       text-align: center;
       h5 {
         text-align: center !important;
@@ -37,6 +61,19 @@ $color-grey-dark: #181818;
       .btn-anima {
         display: inline-block;
         margin-top: 15px;
+      }
+      form {
+        width: 85%;
+        div {
+          display: flex;
+          flex-direction: column;
+        }
+        label {
+          display: block;
+          text-align: left;
+          font-size: 14px;
+          margin: 3px;
+        }
       }
     }
   }
@@ -49,8 +86,8 @@ $color-grey-dark: #181818;
       flex-wrap: wrap;
     }
     .nft {
-      width: 240px;
-      height: 240px;
+      width: 230px;
+      height: 230px;
       position: relative;
       background: $color-main;
       margin-bottom: 25px;

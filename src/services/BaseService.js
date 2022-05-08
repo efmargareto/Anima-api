@@ -27,6 +27,7 @@ import { getAccessToken, logout } from '../store/AccessTokenStore';
 const createHttp = (useAccessToken = false) => {
   const http = axios.create({
     baseURL: 'http://localhost:3002/api'
+    // baseURL: 'https://anima.onrender.com/api'
   })
 
   // interceptors response / request
