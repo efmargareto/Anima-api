@@ -8,6 +8,7 @@ import { deleteUser, editUser, getCurrentUser } from '../../services/UserService
 import { logout } from '../../store/AccessTokenStore'
 import heroImg from './../../assets/img/anima-hero-account.png'
 import basura from './../../assets/img/basura.png'
+import nft1 from './../../assets/nft/anima-1.jpeg'
 import './profile.scss'
 
 export const Profile = () => {
@@ -73,7 +74,7 @@ export const Profile = () => {
         <div className='separator'></div>
         <div className='Profile-inventory anima-section'>
           <div className='Profile-inventory-info'>
-            <img scr={heroImg} alt=''></img>
+            <img scr={nft1} alt=''></img>
             <p className='name'>{userAccount && userAccount.name}</p>
             <p className='small'>{userAccount && userAccount.email}</p>
             <img className='basura' src={basura} alt='' onClick={() => {handleDelete()}}></img>
