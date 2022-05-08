@@ -8,7 +8,7 @@ import { deleteUser, editUser, getCurrentUser } from '../../services/UserService
 import { logout } from '../../store/AccessTokenStore'
 import heroImg from './../../assets/img/anima-hero-account.png'
 import basura from './../../assets/img/basura.png'
-import nft1 from './../../assets/nft/anima-1.jpeg'
+import nft1 from './../../assets/nft/anima-2.jpeg'
 import './profile.scss'
 
 export const Profile = () => {
