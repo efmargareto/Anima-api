@@ -1,9 +1,11 @@
 import { computeHeadingLevel } from '@testing-library/react'
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, Navigate, NavLink } from 'react-router-dom'
+import { Footer } from '../../components/Footer/Footer'
 import { Hero } from '../../components/Hero/Hero'
 import { getNftLiked } from '../../services/NftService'
 import { deleteUser, editUser, getCurrentUser } from '../../services/UserService'
+import { logout } from '../../store/AccessTokenStore'
 import heroImg from './../../assets/img/anima-hero-account.png'
 import basura from './../../assets/img/basura.png'
 import './profile.scss'
@@ -20,7 +22,7 @@ export const Profile = () => {
       setUser(user)
       getNftLiked(user.id)
         .then( nftSaved => {
-          setloading(false)
+          if (nftSaved.length > 1) setloading(false)
           setSavedNft(nftSaved)
       })
     })
@@ -53,6 +55,8 @@ export const Profile = () => {
   const handleDelete = () => {
     deleteUser(userAccount._id,)
     .then( (reponse) => {
+      logout()
+      Navigate('/')
       setUser({})
     })
   }
@@ -75,7 +79,7 @@ export const Profile = () => {
             <img className='basura' src={basura} alt='' onClick={() => {handleDelete()}}></img>
           </div>
           <div className='Profile-inventory-block'>
-            <h5 className='mb-3'>Wellcome to your inventory</h5>
+            <h5 className='mb-3'>Welcome to your inventory</h5>
             <p className='small'>You could see your saved NFT in this page</p>
             <p className='small'>Go to the galery and Check All Anima NFT</p>
             <Link className='btn-anima' to="/galery">Galery</Link>
@@ -116,7 +120,7 @@ export const Profile = () => {
               <div className='NFT-saved-Block'>
               { 
                 savedNft.map( (nftSaved, ind) => {
-                  const {image} = nftSaved
+                  const {image} = nftSaved.producto
                     return (
                       <div className={ind} key={ind}>
                         <div  
@@ -126,15 +130,13 @@ export const Profile = () => {
                         </div>
                       </div>
                     )
-       
                 })
               }
-              <div className='nft'></div>
               </div>
             )
           }
         </div>
-        <div className='separator'></div>
+        <Footer/>
       </div>
     </div>
   )

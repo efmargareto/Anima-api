@@ -7,6 +7,7 @@ import { Galery } from './views/Galery/Galery';
 import { Home } from './views/Home/Home';
 import './App.css';
 import './scss/app.scss'
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return ( 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/profile' element={<Galery />}></Route>
         <Route path='/' element={<Home />}></Route>
       </Routes>
+      
     </div>
   );
 }

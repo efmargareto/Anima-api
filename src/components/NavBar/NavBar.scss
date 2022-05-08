@@ -1,7 +1,9 @@
-$color-main: #5733f5;
+$color-main: #bc9c72;
 $color-white: #fff;
-$color-grey_dark: #727272;
-$color-grey_light: #c2c2c2;
+$color-black: #000;
+$color-black-anima: #181818;
+$color-grey: #c2c2c2;
+$color-grey-dark: #181818;
 
 
 .NavBar {
@@ -21,13 +23,30 @@ $color-grey_light: #c2c2c2;
       margin-bottom: 15px;
       font-size: 12px;
       text-transform: uppercase;
-      color: $color-grey_light;
+      color: $color-grey;
     } 
     .NavBar-block_element {
+      position: relative;
       display: flex;
+      align-items: center;
       margin-bottom: 10px;
+      &.active {
+        color: $color-main;
+        .NavBar-block_link {
+          color: $color-main;
+        } 
+        &::before{
+          content: '';
+          left: -1.5rem;
+          position: absolute;
+          height: 100%;
+          width: 2px;
+          background: $color-main;
+          border-radius: 5px;
+        }
+      }
       .NavBar-block_linkIcon {
-        width: 30px;
+        width: 20px;
       }
       .NavBar-block_link {
         display: block;

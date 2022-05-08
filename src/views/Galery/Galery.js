@@ -171,7 +171,7 @@ export const Galery = () => {
                 subFilters={avaliableSubFilter?.head}
                 handleSubFilter={handleSubFilter} 
               />
-              <button className='FilterGalery button' onClick={() => handleReset()}>Resest Filters</button>
+              <button className='FilterGalery button' onClick={() => handleReset()}>Reset Filters</button>
           </div>
           <div className='Galery-nft d-flex'>
             { filterNfts && 
