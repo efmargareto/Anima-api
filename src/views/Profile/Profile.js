@@ -74,7 +74,7 @@ export const Profile = () => {
         <div className='separator'></div>
         <div className='Profile-inventory anima-section'>
           <div className='Profile-inventory-info'>
-            <img scr={nft1} alt=''></img>
+            <img src={nft1} alt=''></img>
             <p className='name'>{userAccount && userAccount.name}</p>
             <p className='small'>{userAccount && userAccount.email}</p>
             <img className='basura' src={basura} alt='' onClick={() => {handleDelete()}}></img>
